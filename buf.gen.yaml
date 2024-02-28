@@ -6,7 +6,7 @@ plugins:
     out: proto
     opt:
       - esModuleInterop=true
-      - useOptionals=all
+      # - useOptionals=all
       - exportCommonSymbols=false
       - unrecognizedEnum=false
       - snakeToCamel=false

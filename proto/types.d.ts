@@ -1,8 +1,6 @@
 interface Any {
-  type_url?:
-    | string
-    | undefined;
-  value?: Uint8Array | undefined;
+  type_url: string;
+  value: Uint8Array;
 }
 
 declare enum ResourceCode {
@@ -17,23 +15,21 @@ declare enum AccountType {
   Contract = 2,
 }
 interface AccountId {
-  name?: Uint8Array | undefined;
-  address?: Uint8Array | undefined;
+  name: Uint8Array;
+  address: Uint8Array;
 }
 interface Vote {
-  vote_address?:
-    | Uint8Array
-    | undefined;
-  vote_count?: number | undefined;
+  vote_address: Uint8Array;
+  vote_count: number;
 }
 interface Proposal {
-  proposal_id?: number | undefined;
-  proposer_address?: Uint8Array | undefined;
-  parameters?: { [key: number]: number } | undefined;
-  expiration_time?: number | undefined;
-  create_time?: number | undefined;
-  approvals?: Uint8Array[] | undefined;
-  state?: Proposal_State | undefined;
+  proposal_id: number;
+  proposer_address: Uint8Array;
+  parameters: { [key: number]: number };
+  expiration_time: number;
+  create_time: number;
+  approvals: Uint8Array[];
+  state: Proposal_State;
 }
 declare enum Proposal_State {
   PENDING = 0,
@@ -42,158 +38,110 @@ declare enum Proposal_State {
   CANCELED = 3,
 }
 interface Exchange {
-  exchange_id?: number | undefined;
-  creator_address?: Uint8Array | undefined;
-  create_time?: number | undefined;
-  first_token_id?: Uint8Array | undefined;
-  first_token_balance?: number | undefined;
-  second_token_id?: Uint8Array | undefined;
-  second_token_balance?: number | undefined;
+  exchange_id: number;
+  creator_address: Uint8Array;
+  create_time: number;
+  first_token_id: Uint8Array;
+  first_token_balance: number;
+  second_token_id: Uint8Array;
+  second_token_balance: number;
 }
 interface Account {
-  account_name?: Uint8Array | undefined;
-  type?:
-    | AccountType
-    | undefined;
-  address?:
-    | Uint8Array
-    | undefined;
-  balance?:
-    | number
-    | undefined;
-  votes?:
-    | Vote[]
-    | undefined;
-  asset?:
-    | { [key: string]: number }
-    | undefined;
-  assetV2?:
-    | { [key: string]: number }
-    | undefined;
-  frozen?:
-    | Account_Frozen[]
-    | undefined;
-  net_usage?:
-    | number
-    | undefined;
-  acquired_delegated_frozen_balance_for_bandwidth?:
-    | number
-    | undefined;
-  delegated_frozen_balance_for_bandwidth?: number | undefined;
-  old_tron_power?: number | undefined;
-  tron_power?: Account_Frozen | undefined;
-  asset_optimized?:
-    | boolean
-    | undefined;
-  create_time?:
-    | number
-    | undefined;
-  latest_opration_time?:
-    | number
-    | undefined;
-  allowance?:
-    | number
-    | undefined;
-  latest_withdraw_time?:
-    | number
-    | undefined;
-  code?: Uint8Array | undefined;
-  is_witness?: boolean | undefined;
-  is_committee?:
-    | boolean
-    | undefined;
-  frozen_supply?:
-    | Account_Frozen[]
-    | undefined;
-  asset_issued_name?: Uint8Array | undefined;
-  asset_issued_ID?: Uint8Array | undefined;
-  latest_asset_operation_time?: { [key: string]: number } | undefined;
-  latest_asset_operation_timeV2?: { [key: string]: number } | undefined;
-  free_net_usage?: number | undefined;
-  free_asset_net_usage?: { [key: string]: number } | undefined;
-  free_asset_net_usageV2?: { [key: string]: number } | undefined;
-  latest_consume_time?: number | undefined;
-  latest_consume_free_time?:
-    | number
-    | undefined;
-  account_id?: Uint8Array | undefined;
-  net_window_size?: number | undefined;
-  net_window_optimized?: boolean | undefined;
-  account_resource?: Account_AccountResource | undefined;
-  codeHash?: Uint8Array | undefined;
-  owner_permission?: Permission | undefined;
-  witness_permission?: Permission | undefined;
-  active_permission?: Permission[] | undefined;
-  frozenV2?: Account_FreezeV2[] | undefined;
-  unfrozenV2?: Account_UnFreezeV2[] | undefined;
-  delegated_frozenV2_balance_for_bandwidth?: number | undefined;
-  acquired_delegated_frozenV2_balance_for_bandwidth?: number | undefined;
+  account_name: Uint8Array;
+  type: AccountType;
+  address: Uint8Array;
+  balance: number;
+  votes: Vote[];
+  asset: { [key: string]: number };
+  assetV2: { [key: string]: number };
+  frozen: Account_Frozen[];
+  net_usage: number;
+  acquired_delegated_frozen_balance_for_bandwidth: number;
+  delegated_frozen_balance_for_bandwidth: number;
+  old_tron_power: number;
+  tron_power: Account_Frozen | undefined;
+  asset_optimized: boolean;
+  create_time: number;
+  latest_opration_time: number;
+  allowance: number;
+  latest_withdraw_time: number;
+  code: Uint8Array;
+  is_witness: boolean;
+  is_committee: boolean;
+  frozen_supply: Account_Frozen[];
+  asset_issued_name: Uint8Array;
+  asset_issued_ID: Uint8Array;
+  latest_asset_operation_time: { [key: string]: number };
+  latest_asset_operation_timeV2: { [key: string]: number };
+  free_net_usage: number;
+  free_asset_net_usage: { [key: string]: number };
+  free_asset_net_usageV2: { [key: string]: number };
+  latest_consume_time: number;
+  latest_consume_free_time: number;
+  account_id: Uint8Array;
+  net_window_size: number;
+  net_window_optimized: boolean;
+  account_resource: Account_AccountResource | undefined;
+  codeHash: Uint8Array;
+  owner_permission: Permission | undefined;
+  witness_permission: Permission | undefined;
+  active_permission: Permission[];
+  frozenV2: Account_FreezeV2[];
+  unfrozenV2: Account_UnFreezeV2[];
+  delegated_frozenV2_balance_for_bandwidth: number;
+  acquired_delegated_frozenV2_balance_for_bandwidth: number;
 }
 interface Account_Frozen {
-  frozen_balance?:
-    | number
-    | undefined;
-  expire_time?: number | undefined;
+  frozen_balance: number;
+  expire_time: number;
 }
 interface Account_AccountResource {
-  energy_usage?:
-    | number
-    | undefined;
-  frozen_balance_for_energy?: Account_Frozen | undefined;
-  latest_consume_time_for_energy?:
-    | number
-    | undefined;
-  acquired_delegated_frozen_balance_for_energy?:
-    | number
-    | undefined;
-  delegated_frozen_balance_for_energy?:
-    | number
-    | undefined;
-  storage_limit?: number | undefined;
-  storage_usage?: number | undefined;
-  latest_exchange_storage_time?: number | undefined;
-  energy_window_size?: number | undefined;
-  delegated_frozenV2_balance_for_energy?: number | undefined;
-  acquired_delegated_frozenV2_balance_for_energy?: number | undefined;
-  energy_window_optimized?: boolean | undefined;
+  energy_usage: number;
+  frozen_balance_for_energy: Account_Frozen | undefined;
+  latest_consume_time_for_energy: number;
+  acquired_delegated_frozen_balance_for_energy: number;
+  delegated_frozen_balance_for_energy: number;
+  storage_limit: number;
+  storage_usage: number;
+  latest_exchange_storage_time: number;
+  energy_window_size: number;
+  delegated_frozenV2_balance_for_energy: number;
+  acquired_delegated_frozenV2_balance_for_energy: number;
+  energy_window_optimized: boolean;
 }
 interface Account_FreezeV2 {
-  type?: ResourceCode | undefined;
-  amount?: number | undefined;
+  type: ResourceCode;
+  amount: number;
 }
 interface Account_UnFreezeV2 {
-  type?: ResourceCode | undefined;
-  unfreeze_amount?: number | undefined;
-  unfreeze_expire_time?: number | undefined;
+  type: ResourceCode;
+  unfreeze_amount: number;
+  unfreeze_expire_time: number;
 }
 interface Key {
-  address?: Uint8Array | undefined;
-  weight?: number | undefined;
+  address: Uint8Array;
+  weight: number;
 }
 interface DelegatedResource {
-  from?: Uint8Array | undefined;
-  to?: Uint8Array | undefined;
-  frozen_balance_for_bandwidth?: number | undefined;
-  frozen_balance_for_energy?: number | undefined;
-  expire_time_for_bandwidth?: number | undefined;
-  expire_time_for_energy?: number | undefined;
+  from: Uint8Array;
+  to: Uint8Array;
+  frozen_balance_for_bandwidth: number;
+  frozen_balance_for_energy: number;
+  expire_time_for_bandwidth: number;
+  expire_time_for_energy: number;
 }
 interface authority {
-  account?: AccountId | undefined;
-  permission_name?: Uint8Array | undefined;
+  account: AccountId | undefined;
+  permission_name: Uint8Array;
 }
 interface Permission {
-  type?:
-    | Permission_PermissionType
-    | undefined;
-  id?: number | undefined;
-  permission_name?: string | undefined;
-  threshold?: number | undefined;
-  parent_id?:
-    | number
-    | undefined;
-  operations?: Uint8Array | undefined;
-  keys?: Key[] | undefined;
+  type: Permission_PermissionType;
+  id: number;
+  permission_name: string;
+  threshold: number;
+  parent_id: number;
+  operations: Uint8Array;
+  keys: Key[];
 }
 declare enum Permission_PermissionType {
   Owner = 0,
@@ -201,45 +149,45 @@ declare enum Permission_PermissionType {
   Active = 2,
 }
 interface Witness {
-  address?: Uint8Array | undefined;
-  voteCount?: number | undefined;
-  pubKey?: Uint8Array | undefined;
-  url?: string | undefined;
-  totalProduced?: number | undefined;
-  totalMissed?: number | undefined;
-  latestBlockNum?: number | undefined;
-  latestSlotNum?: number | undefined;
-  isJobs?: boolean | undefined;
+  address: Uint8Array;
+  voteCount: number;
+  pubKey: Uint8Array;
+  url: string;
+  totalProduced: number;
+  totalMissed: number;
+  latestBlockNum: number;
+  latestSlotNum: number;
+  isJobs: boolean;
 }
 interface ResourceReceipt {
-  energy_usage?: number | undefined;
-  energy_fee?: number | undefined;
-  origin_energy_usage?: number | undefined;
-  energy_usage_total?: number | undefined;
-  net_usage?: number | undefined;
-  net_fee?: number | undefined;
-  result?: Transaction_Result_contractResult | undefined;
-  energy_penalty_total?: number | undefined;
+  energy_usage: number;
+  energy_fee: number;
+  origin_energy_usage: number;
+  energy_usage_total: number;
+  net_usage: number;
+  net_fee: number;
+  result: Transaction_Result_contractResult;
+  energy_penalty_total: number;
 }
 interface MarketOrderDetail {
-  makerOrderId?: Uint8Array | undefined;
-  takerOrderId?: Uint8Array | undefined;
-  fillSellQuantity?: number | undefined;
-  fillBuyQuantity?: number | undefined;
+  makerOrderId: Uint8Array;
+  takerOrderId: Uint8Array;
+  fillSellQuantity: number;
+  fillBuyQuantity: number;
 }
 interface Transaction {
-  raw_data?:
+  raw_data:
     | Transaction_raw
     | undefined;
-  signature?: Uint8Array[] | undefined;
-  ret?: Transaction_Result[] | undefined;
+  signature: Uint8Array[];
+  ret: Transaction_Result[];
 }
 interface Transaction_Contract {
-  type?: Transaction_Contract_ContractType | undefined;
-  parameter?: Any | undefined;
-  provider?: Uint8Array | undefined;
-  ContractName?: Uint8Array | undefined;
-  Permission_id?: number | undefined;
+  type: Transaction_Contract_ContractType;
+  parameter: Any | undefined;
+  provider: Uint8Array;
+  ContractName: Uint8Array;
+  Permission_id: number;
 }
 declare enum Transaction_Contract_ContractType {
   AccountCreateContract = 0,
@@ -285,21 +233,21 @@ declare enum Transaction_Contract_ContractType {
   CancelAllUnfreezeV2Contract = 59,
 }
 interface Transaction_Result {
-  fee?: number | undefined;
-  ret?: Transaction_Result_code | undefined;
-  contractRet?: Transaction_Result_contractResult | undefined;
-  assetIssueID?: string | undefined;
-  withdraw_amount?: number | undefined;
-  unfreeze_amount?: number | undefined;
-  exchange_received_amount?: number | undefined;
-  exchange_inject_another_amount?: number | undefined;
-  exchange_withdraw_another_amount?: number | undefined;
-  exchange_id?: number | undefined;
-  shielded_transaction_fee?: number | undefined;
-  orderId?: Uint8Array | undefined;
-  orderDetails?: MarketOrderDetail[] | undefined;
-  withdraw_expire_amount?: number | undefined;
-  cancel_unfreezeV2_amount?: { [key: string]: number } | undefined;
+  fee: number;
+  ret: Transaction_Result_code;
+  contractRet: Transaction_Result_contractResult;
+  assetIssueID: string;
+  withdraw_amount: number;
+  unfreeze_amount: number;
+  exchange_received_amount: number;
+  exchange_inject_another_amount: number;
+  exchange_withdraw_another_amount: number;
+  exchange_id: number;
+  shielded_transaction_fee: number;
+  orderId: Uint8Array;
+  orderDetails: MarketOrderDetail[];
+  withdraw_expire_amount: number;
+  cancel_unfreezeV2_amount: { [key: string]: number };
 }
 declare enum Transaction_Result_code {
   SUCESS = 0,
@@ -324,96 +272,82 @@ declare enum Transaction_Result_contractResult {
   INVALID_CODE = 15,
 }
 interface Transaction_raw {
-  ref_block_bytes?: Uint8Array | undefined;
-  ref_block_num?: number | undefined;
-  ref_block_hash?: Uint8Array | undefined;
-  expiration?: number | undefined;
-  auths?:
-    | authority[]
-    | undefined;
-  data?:
-    | Uint8Array
-    | undefined;
-  contract?:
-    | Transaction_Contract[]
-    | undefined;
-  scripts?: Uint8Array | undefined;
-  timestamp?: number | undefined;
-  fee_limit?: number | undefined;
+  ref_block_bytes: Uint8Array;
+  ref_block_num: number;
+  ref_block_hash: Uint8Array;
+  expiration: number;
+  auths: authority[];
+  data: Uint8Array;
+  contract: Transaction_Contract[];
+  scripts: Uint8Array;
+  timestamp: number;
+  fee_limit: number;
 }
 interface TransactionInfo {
-  id?: Uint8Array | undefined;
-  fee?: number | undefined;
-  blockNumber?: number | undefined;
-  blockTimeStamp?: number | undefined;
-  contractResult?: Uint8Array[] | undefined;
-  contract_address?: Uint8Array | undefined;
-  receipt?: ResourceReceipt | undefined;
-  log?: TransactionInfo_Log[] | undefined;
-  result?: TransactionInfo_code | undefined;
-  resMessage?: Uint8Array | undefined;
-  assetIssueID?: string | undefined;
-  withdraw_amount?: number | undefined;
-  unfreeze_amount?: number | undefined;
-  internal_transactions?: InternalTransaction[] | undefined;
-  exchange_received_amount?: number | undefined;
-  exchange_inject_another_amount?: number | undefined;
-  exchange_withdraw_another_amount?: number | undefined;
-  exchange_id?: number | undefined;
-  shielded_transaction_fee?: number | undefined;
-  orderId?: Uint8Array | undefined;
-  orderDetails?: MarketOrderDetail[] | undefined;
-  packingFee?: number | undefined;
-  withdraw_expire_amount?: number | undefined;
-  cancel_unfreezeV2_amount?: { [key: string]: number } | undefined;
+  id: Uint8Array;
+  fee: number;
+  blockNumber: number;
+  blockTimeStamp: number;
+  contractResult: Uint8Array[];
+  contract_address: Uint8Array;
+  receipt: ResourceReceipt | undefined;
+  log: TransactionInfo_Log[];
+  result: TransactionInfo_code;
+  resMessage: Uint8Array;
+  assetIssueID: string;
+  withdraw_amount: number;
+  unfreeze_amount: number;
+  internal_transactions: InternalTransaction[];
+  exchange_received_amount: number;
+  exchange_inject_another_amount: number;
+  exchange_withdraw_another_amount: number;
+  exchange_id: number;
+  shielded_transaction_fee: number;
+  orderId: Uint8Array;
+  orderDetails: MarketOrderDetail[];
+  packingFee: number;
+  withdraw_expire_amount: number;
+  cancel_unfreezeV2_amount: { [key: string]: number };
 }
 declare enum TransactionInfo_code {
   SUCESS = 0,
   FAILED = 1,
 }
 interface TransactionInfo_Log {
-  address?: Uint8Array | undefined;
-  topics?: Uint8Array[] | undefined;
-  data?: Uint8Array | undefined;
+  address: Uint8Array;
+  topics: Uint8Array[];
+  data: Uint8Array;
 }
 interface BlockHeader {
-  raw_data?: BlockHeader_raw | undefined;
-  witness_signature?: Uint8Array | undefined;
+  raw_data: BlockHeader_raw | undefined;
+  witness_signature: Uint8Array;
 }
 interface BlockHeader_raw {
-  timestamp?: number | undefined;
-  txTrieRoot?: Uint8Array | undefined;
-  parentHash?:
-    | Uint8Array
-    | undefined;
-  number?: number | undefined;
-  witness_id?: number | undefined;
-  witness_address?: Uint8Array | undefined;
-  version?: number | undefined;
-  accountStateRoot?: Uint8Array | undefined;
+  timestamp: number;
+  txTrieRoot: Uint8Array;
+  parentHash: Uint8Array;
+  number: number;
+  witness_id: number;
+  witness_address: Uint8Array;
+  version: number;
+  accountStateRoot: Uint8Array;
 }
 interface Block {
-  transactions?: Transaction[] | undefined;
-  block_header?: BlockHeader | undefined;
+  transactions: Transaction[];
+  block_header: BlockHeader | undefined;
 }
 interface InternalTransaction {
-  hash?:
-    | Uint8Array
-    | undefined;
-  caller_address?:
-    | Uint8Array
-    | undefined;
-  transferTo_address?: Uint8Array | undefined;
-  callValueInfo?: InternalTransaction_CallValueInfo[] | undefined;
-  note?: Uint8Array | undefined;
-  rejected?: boolean | undefined;
-  extra?: string | undefined;
+  hash: Uint8Array;
+  caller_address: Uint8Array;
+  transferTo_address: Uint8Array;
+  callValueInfo: InternalTransaction_CallValueInfo[];
+  note: Uint8Array;
+  rejected: boolean;
+  extra: string;
 }
 interface InternalTransaction_CallValueInfo {
-  callValue?:
-    | number
-    | undefined;
-  tokenId?: string | undefined;
+  callValue: number;
+  tokenId: string;
 }
 
 export type { Account, Block, BlockHeader, DelegatedResource, Exchange, InternalTransaction, Permission, Proposal, Transaction, TransactionInfo, TransactionInfo_Log, Witness };
