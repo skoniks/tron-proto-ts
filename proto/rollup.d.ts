@@ -230,6 +230,11 @@ interface Transaction_raw {
   timestamp: number;
   fee_limit: number;
 }
+interface TransactionInfo_Log {
+  address: string;
+  topics: string[];
+  data: string;
+}
 interface BlockHeader {
   raw_data: BlockHeader_raw | undefined;
   witness_signature: string;
@@ -247,6 +252,19 @@ interface BlockHeader_raw {
 interface Block {
   transactions: Transaction[];
   block_header: BlockHeader | undefined;
+}
+interface InternalTransaction {
+  hash: string;
+  caller_address: string;
+  transferTo_address: string;
+  callValueInfo: InternalTransaction_CallValueInfo[];
+  note: string;
+  rejected: boolean;
+  extra: string;
+}
+interface InternalTransaction_CallValueInfo {
+  callValue: number;
+  tokenId: string;
 }
 
 interface Return {
@@ -272,5 +290,17 @@ declare const enum Return_response_code {
 interface BlockList {
   block: Block[];
 }
+interface TransactionExtention {
+  transaction:
+    | Transaction
+    | undefined;
+  txid: string;
+  constant_result: string[];
+  result: Return | undefined;
+  energy_used: number;
+  logs: TransactionInfo_Log[];
+  internal_transactions: InternalTransaction[];
+  energy_penalty: number;
+}
 
-export type { Account, Block, BlockList, Return, Transaction };
+export type { Account, Block, BlockList, Return, Transaction, TransactionExtention };
