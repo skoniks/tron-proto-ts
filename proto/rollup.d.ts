@@ -1,31 +1,31 @@
 interface Any {
   type_url: string;
-  value: Uint8Array;
+  value: string;
 }
 
-declare enum ResourceCode {
+declare const enum ResourceCode {
   BANDWIDTH = 0,
   ENERGY = 1,
   TRON_POWER = 2,
 }
 
-declare enum AccountType {
+declare const enum AccountType {
   Normal = 0,
   AssetIssue = 1,
   Contract = 2,
 }
 interface AccountId {
-  name: Uint8Array;
-  address: Uint8Array;
+  name: string;
+  address: string;
 }
 interface Vote {
-  vote_address: Uint8Array;
+  vote_address: string;
   vote_count: number;
 }
 interface Account {
-  account_name: Uint8Array;
+  account_name: string;
   type: AccountType;
-  address: Uint8Array;
+  address: string;
   balance: number;
   votes: Vote[];
   asset: { [key: string]: number };
@@ -41,12 +41,12 @@ interface Account {
   latest_opration_time: number;
   allowance: number;
   latest_withdraw_time: number;
-  code: Uint8Array;
+  code: string;
   is_witness: boolean;
   is_committee: boolean;
   frozen_supply: Account_Frozen[];
-  asset_issued_name: Uint8Array;
-  asset_issued_ID: Uint8Array;
+  asset_issued_name: string;
+  asset_issued_ID: string;
   latest_asset_operation_time: { [key: string]: number };
   latest_asset_operation_timeV2: { [key: string]: number };
   free_net_usage: number;
@@ -54,11 +54,11 @@ interface Account {
   free_asset_net_usageV2: { [key: string]: number };
   latest_consume_time: number;
   latest_consume_free_time: number;
-  account_id: Uint8Array;
+  account_id: string;
   net_window_size: number;
   net_window_optimized: boolean;
   account_resource: Account_AccountResource | undefined;
-  codeHash: Uint8Array;
+  codeHash: string;
   owner_permission: Permission | undefined;
   witness_permission: Permission | undefined;
   active_permission: Permission[];
@@ -95,12 +95,12 @@ interface Account_UnFreezeV2 {
   unfreeze_expire_time: number;
 }
 interface Key {
-  address: Uint8Array;
+  address: string;
   weight: number;
 }
 interface authority {
   account: AccountId | undefined;
-  permission_name: Uint8Array;
+  permission_name: string;
 }
 interface Permission {
   type: Permission_PermissionType;
@@ -108,17 +108,17 @@ interface Permission {
   permission_name: string;
   threshold: number;
   parent_id: number;
-  operations: Uint8Array;
+  operations: string;
   keys: Key[];
 }
-declare enum Permission_PermissionType {
+declare const enum Permission_PermissionType {
   Owner = 0,
   Witness = 1,
   Active = 2,
 }
 interface MarketOrderDetail {
-  makerOrderId: Uint8Array;
-  takerOrderId: Uint8Array;
+  makerOrderId: string;
+  takerOrderId: string;
   fillSellQuantity: number;
   fillBuyQuantity: number;
 }
@@ -126,17 +126,17 @@ interface Transaction {
   raw_data:
     | Transaction_raw
     | undefined;
-  signature: Uint8Array[];
+  signature: string[];
   ret: Transaction_Result[];
 }
 interface Transaction_Contract {
   type: Transaction_Contract_ContractType;
   parameter: Any | undefined;
-  provider: Uint8Array;
-  ContractName: Uint8Array;
+  provider: string;
+  ContractName: string;
   Permission_id: number;
 }
-declare enum Transaction_Contract_ContractType {
+declare const enum Transaction_Contract_ContractType {
   AccountCreateContract = 0,
   TransferContract = 1,
   TransferAssetContract = 2,
@@ -191,16 +191,16 @@ interface Transaction_Result {
   exchange_withdraw_another_amount: number;
   exchange_id: number;
   shielded_transaction_fee: number;
-  orderId: Uint8Array;
+  orderId: string;
   orderDetails: MarketOrderDetail[];
   withdraw_expire_amount: number;
   cancel_unfreezeV2_amount: { [key: string]: number };
 }
-declare enum Transaction_Result_code {
+declare const enum Transaction_Result_code {
   SUCESS = 0,
   FAILED = 1,
 }
-declare enum Transaction_Result_contractResult {
+declare const enum Transaction_Result_contractResult {
   DEFAULT = 0,
   SUCCESS = 1,
   REVERT = 2,
@@ -219,30 +219,30 @@ declare enum Transaction_Result_contractResult {
   INVALID_CODE = 15,
 }
 interface Transaction_raw {
-  ref_block_bytes: Uint8Array;
+  ref_block_bytes: string;
   ref_block_num: number;
-  ref_block_hash: Uint8Array;
+  ref_block_hash: string;
   expiration: number;
   auths: authority[];
-  data: Uint8Array;
+  data: string;
   contract: Transaction_Contract[];
-  scripts: Uint8Array;
+  scripts: string;
   timestamp: number;
   fee_limit: number;
 }
 interface BlockHeader {
   raw_data: BlockHeader_raw | undefined;
-  witness_signature: Uint8Array;
+  witness_signature: string;
 }
 interface BlockHeader_raw {
   timestamp: number;
-  txTrieRoot: Uint8Array;
-  parentHash: Uint8Array;
+  txTrieRoot: string;
+  parentHash: string;
   number: number;
   witness_id: number;
-  witness_address: Uint8Array;
+  witness_address: string;
   version: number;
-  accountStateRoot: Uint8Array;
+  accountStateRoot: string;
 }
 interface Block {
   transactions: Transaction[];
@@ -252,9 +252,9 @@ interface Block {
 interface Return {
   result: boolean;
   code: Return_response_code;
-  message: Uint8Array;
+  message: string;
 }
-declare enum Return_response_code {
+declare const enum Return_response_code {
   SUCCESS = 0,
   SIGERROR = 1,
   CONTRACT_VALIDATE_ERROR = 2,
