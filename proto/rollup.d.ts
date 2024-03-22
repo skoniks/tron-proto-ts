@@ -267,6 +267,7 @@ declare const enum Return_response_code {
   SERVER_BUSY = 9,
   NO_CONNECTION = 10,
   NOT_ENOUGH_EFFECTIVE_CONNECTION = 11,
+  BLOCK_UNSOLIDIFIED = 12,
   OTHER_ERROR = 20,
 }
 interface AccountResourceMessage {
