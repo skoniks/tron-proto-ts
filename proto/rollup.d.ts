@@ -116,6 +116,16 @@ declare const enum Permission_PermissionType {
   Witness = 1,
   Active = 2,
 }
+interface ResourceReceipt {
+  energy_usage: number;
+  energy_fee: number;
+  origin_energy_usage: number;
+  energy_usage_total: number;
+  net_usage: number;
+  net_fee: number;
+  result: Transaction_Result_contractResult;
+  energy_penalty_total: number;
+}
 interface MarketOrderDetail {
   makerOrderId: string;
   takerOrderId: string;
@@ -230,6 +240,41 @@ interface Transaction_raw {
   timestamp: number;
   fee_limit: number;
 }
+interface TransactionInfo {
+  id: string;
+  fee: number;
+  blockNumber: number;
+  blockTimeStamp: number;
+  contractResult: string[];
+  contract_address: string;
+  receipt: ResourceReceipt | undefined;
+  log: TransactionInfo_Log[];
+  result: TransactionInfo_code;
+  resMessage: string;
+  assetIssueID: string;
+  withdraw_amount: number;
+  unfreeze_amount: number;
+  internal_transactions: InternalTransaction[];
+  exchange_received_amount: number;
+  exchange_inject_another_amount: number;
+  exchange_withdraw_another_amount: number;
+  exchange_id: number;
+  shielded_transaction_fee: number;
+  orderId: string;
+  orderDetails: MarketOrderDetail[];
+  packingFee: number;
+  withdraw_expire_amount: number;
+  cancel_unfreezeV2_amount: { [key: string]: number };
+}
+declare const enum TransactionInfo_code {
+  SUCESS = 0,
+  FAILED = 1,
+}
+interface TransactionInfo_Log {
+  address: string;
+  topics: string[];
+  data: string;
+}
 interface BlockHeader {
   raw_data: BlockHeader_raw | undefined;
   witness_signature: string;
@@ -247,6 +292,19 @@ interface BlockHeader_raw {
 interface Block {
   transactions: Transaction[];
   block_header: BlockHeader | undefined;
+}
+interface InternalTransaction {
+  hash: string;
+  caller_address: string;
+  transferTo_address: string;
+  callValueInfo: InternalTransaction_CallValueInfo[];
+  note: string;
+  rejected: boolean;
+  extra: string;
+}
+interface InternalTransaction_CallValueInfo {
+  callValue: number;
+  tokenId: string;
 }
 
 interface Return {
@@ -290,4 +348,4 @@ interface AccountResourceMessage {
   storageLimit: number;
 }
 
-export type { Account, AccountResourceMessage, Block, Return, Transaction };
+export type { Account, AccountResourceMessage, Block, Return, Transaction, TransactionInfo };
